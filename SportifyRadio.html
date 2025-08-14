@@ -130,17 +130,17 @@
         </div>
     </div>
     
+    <!-- Audio Element -->
+    <audio id="audioPlayer" src="siaran minggu 1"></audio> <!-- Replace with your actual MP3 file URL -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const audio = new Audio();
+            const audio = document.getElementById('audioPlayer');
             const playBtn = document.querySelector('.play-btn');
             const playIcon = playBtn.querySelector('svg');
             const playPath = playIcon.querySelector('path:nth-child(1)');
             const playCircle = playIcon.querySelector('path:nth-child(2)');
             let isPlaying = false;
-            
-            // Set stream URL (replace with your actual stream URL)
-            audio.src = 'https://youtu.be/gvunApwKIiY?si=XRUk4PHP3I6_PUnM';
             
             playBtn.addEventListener('click', function() {
                 if (isPlaying) {
@@ -168,4 +168,3 @@
     </script>
 </body>
 </html>
-
