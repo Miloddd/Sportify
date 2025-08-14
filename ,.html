@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify Radio - Your Beach Soundtrack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: linear-gradient(to bottom, #94d4fc, #0066ff);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .player-container {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.3);
+        }
+        
+        .play-btn {
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .now-playing {
+            animation: slideIn 0.5s forwards;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-4">
+    <div class="max-w-md w-full player-container rounded-3xl p-8 text-center overflow-hidden">
+        <!-- Header with logo and title -->
+        <div class="flex flex-col items-center mb-8">
+            <img src="https://i.pinimg.com/736x/65/8f/e0/658fe039701656f14a463d625085b465.jpg" alt="Sportify Radio logo - wave and sun icon in vibrant colors with text below" class="w-24 h-24 mb-4 rounded-full border-4 border-white" />
+            <h1 class="text-4xl font-bold uppercase tracking-wider">SPORTIFY</h1>
+            <p class="text-lg opacity-80">Your Active Radio</p>
+        </div>
+        
+        <!-- Now Playing Section -->
+        <div class="now-playing mb-8 bg-white bg-opacity-20 rounded-xl p-4">
+            <div class="flex items-center justify-center mb-3">
+                <img src="https://i.pinimg.com/736x/65/8f/e0/658fe039701656f14a463d625085b465.jpg" alt="Album cover art for current track - tropical beach scene with vibrant colors" class="w-40 h-40 rounded-lg shadow-lg" />
+            </div>
+            <div class="text-left">
+                <h2 class="text-2xl font-bold truncate">Activers Vibes</h2>
+                <p class="text-lg opacity-90">Sportify Radio Activers Olahraga, Dengernya di Sportify Radio</p>
+            </div>
+        </div>
+        
+        <!-- Player Controls -->
+        <div class="flex flex-col items-center space-y-6">
+            <!-- Progress Bar -->
+            <div class="w-full">
+                <div class="relative h-2 bg-white bg-opacity-30 rounded-full">
+                    <div class="absolute h-full bg-white rounded-full" style="width: 45%"></div>
+                </div>
+                <div class="flex justify-between text-xs mt-1">
+                    <span>-:-</span>
+                    <span>-:-</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-center space-x-6">
+                <button class="text-white opacity-80 hover:opacity-100" title="Previous">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                
+                <button class="play-btn bg-white text-pink-600 rounded-full p-4 hover:bg-opacity-90" title="Play">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+                
+                <button class="text-white opacity-80 hover:opacity-100" title="Next">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Volume Control -->
+            <div class="flex items-center w-full px-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M12 6a7.975 7.975 0 015.657 2.343m0 0a7.975 7.975 0 010 11.314m-11.314 0a7.975 7.975 0 010-11.314m0 0a7.975 7.975 0 015.657-2.343" />
+                </svg>
+                <input type="range" class="volume-slider flex-1 mx-3 appearance-none h-1 bg-white bg-opacity-30 rounded-full" value="80" min="0" max="100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" />
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Channel & Social Links -->
+        <div class="mt-8 pt-4 border-t border-white border-opacity-20 flex justify-center space-x-6">
+            <a href="https://www.instagram.com/sportifyradio?igsh=MXZqcHlobm5ueWo5cA%3D%3D&utm_source=qr" class="text-white opacity-70 hover:opacity-100" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16a4 4 0 100-8 4 4 0 000 8zm0 0a6 6 0 100-12 6 6 0 000 12z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 16a4 4 0 100-8 4 4 0 000 8zm0 0a6 6 0 100-12 6 6 0 000 12z" />
+                </svg>
+            </a>
+            <a href="#" class="text-white opacity-70 hover:opacity-100" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Audio Element -->
+    <h1>Memutar MP3 di HTML</h1>
+
+<audio controls>
+  <source src="siaran minggu 1.mp3" type="audio/mpeg">
+</audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audioPlayer');
+            const playBtn = document.querySelector('.play-btn');
+            const playIcon = playBtn.querySelector('svg');
+            const playPath = playIcon.querySelector('path:nth-child(1)');
+            const playCircle = playIcon.querySelector('path:nth-child(2)');
+            let isPlaying = false;
+            
+            playBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    audio.pause();
+                    playPath.setAttribute('d', 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z');
+                    playCircle.removeAttribute('class');
+                    playBtn.classList.remove('bg-white');
+                    playBtn.classList.add('bg-opacity-20');
+                } else {
+                    audio.play();
+                    playPath.setAttribute('d', 'M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z');
+                    playCircle.remove();
+                    playBtn.classList.add('bg-white');
+                    playBtn.classList.remove('bg-opacity-20');
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            // Volume control
+            const volumeSlider = document.querySelector('.volume-slider');
+            volumeSlider.addEventListener('input', function() {
+                audio.volume = this.value / 100;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
